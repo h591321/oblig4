@@ -8,13 +8,14 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 public class DeltagerDAO {
+	
 	@PersistenceContext(name = "brukerPU")
 	private EntityManager em;
 	
-	public  List<Deltager> hentAlleDeltagere(){
-		return em.createQuery("SELECT b FROM Deltager b", Deltager.class).getResultList();
+	public synchronized List<Deltager> hentAlleDeltagere(){
+		return em.createQuery("SELECT b FROM deltager b", Deltager.class).getResultList();
 	}
-	public Deltager hentDeltager(String mobil) {
+	public synchronized Deltager hentDeltager(String mobil) {
 		return em.find(Deltager.class, mobil);
 	}
 	public void lagreNyDeltager(Deltager nyDeltager) {

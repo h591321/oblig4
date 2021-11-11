@@ -22,11 +22,12 @@ public class SkjemaServlet extends HttpServlet {
 	@EJB
 	private DeltagerDAO deltagerDAO;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/jsp/paameldingskjema.jsp").forward(request, response);
 		}
 
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SkjemaBean skjema = new SkjemaBean(request);
 		
@@ -41,7 +42,7 @@ public class SkjemaServlet extends HttpServlet {
 			request.getSession().setAttribute("skjema", skjema);
 			response.sendRedirect("SkjemaServlet");
 		}
-		
+		//stikk av ditt svin, du er for stygg for meg, og morra di er med på det værste
 		
 		
 	}
