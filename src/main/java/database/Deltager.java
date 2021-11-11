@@ -6,8 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema="oblig4")
-
+@Table(schema="oblig4", name="deltager")
 public class Deltager {
 
 	@Id
@@ -15,10 +14,13 @@ public class Deltager {
 	private String fornavn;
 	private String etternavn;
 	private String kjonn;
-	//@Embedded
 	private String passord;
+
+
+
+	//@Embedded
 	
-	public Deltager(String fornavn,String etternavn,String mobil, String kjonn, String passord) {
+	public Deltager(String mobil, String fornavn,String etternavn,String kjonn, String passord) {
 		this.mobil=mobil;
 		this.fornavn=fornavn;
 		this.etternavn=etternavn;

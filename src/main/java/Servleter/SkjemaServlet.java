@@ -31,7 +31,7 @@ public class SkjemaServlet extends HttpServlet {
 		SkjemaBean skjema = new SkjemaBean(request);
 		
 		if(skjema.allInputValid()) {
-			Deltager nyDeltager = new Deltager(skjema.getFornavn(), skjema.getEtternavn(), skjema.getMobil(), skjema.getKjonn(), skjema.getPassord());
+			Deltager nyDeltager = new Deltager( skjema.getMobil(), skjema.getFornavn(), skjema.getEtternavn(), skjema.getKjonn(), skjema.getPassord());
 			deltagerDAO.lagreNyDeltager(nyDeltager);
 			request.getSession().setAttribute("skjema", skjema);
 			response.sendRedirect("BekreftelseServlet");

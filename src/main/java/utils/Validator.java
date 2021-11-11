@@ -35,8 +35,8 @@ public class Validator {
 	public static boolean ValidKjonn(String kjonn) {
 		return kjonn!=null;
 	}
-	public static boolean isValidLogin(String mobil, String passord) {
-		Deltager deltager = DeltagerDAO.hentDeltager(mobil);
+	public static boolean isValidLogin(String mobil, String passord, DeltagerDAO deltagerDAO) {
+		Deltager deltager = deltagerDAO.hentDeltager(mobil);
 		if(deltager!=null) {
 			return passord.equals(deltager.getPassord());
 		}else {

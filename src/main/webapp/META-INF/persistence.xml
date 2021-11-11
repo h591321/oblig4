@@ -7,7 +7,7 @@
 		transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>DAT108LocalDS</jta-data-source>
-		<class>no.hvl.dat108.Deltager</class>
+		<class>database.Deltager</class>
 		<properties>
 			<property name="eclipselink.weaving" value="false" />
 		</properties>
