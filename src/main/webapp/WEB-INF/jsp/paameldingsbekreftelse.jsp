@@ -1,4 +1,6 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,9 +15,9 @@
 	<h2>Påmeldingsbekreftelse</h2>
 	<p>Påmeldingen er mottatt for</p>
 	<p>
-		&nbsp;&nbsp;&nbsp;${skjema.fornavn} <br />
-		&nbsp;&nbsp;&nbsp;${skjema.etternavn}<br />
-		&nbsp;&nbsp;&nbsp;${skjema.mobil}<br /> &nbsp;&nbsp;&nbsp;${skjema.kjonn}
+		&nbsp;&nbsp;&nbsp;<c:out value="${skjema.fornavn}"/> <br />
+		&nbsp;&nbsp;&nbsp;<c:out value="${skjema.etternavn}"/><br />
+		&nbsp;&nbsp;&nbsp;<c:out value="${skjema.mobil}"/><br /> &nbsp;&nbsp;&nbsp;<c:out value="${skjema.kjonn}"/>
 	</p>
 	<a href="DeltagerListeServlet">Gå til deltagerlisten</a>
 </body>

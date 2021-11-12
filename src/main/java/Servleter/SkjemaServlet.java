@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.Deltager;
 import database.DeltagerDAO;
+import utils.LoginUtil;
+import utils.PassordUtil;
 import utils.SkjemaBean;
 
 
@@ -32,8 +34,11 @@ public class SkjemaServlet extends HttpServlet {
 		SkjemaBean skjema = new SkjemaBean(request);
 		
 		if(skjema.allInputValid()) {
-			Deltager nyDeltager = new Deltager( skjema.getMobil(), skjema.getFornavn(), skjema.getEtternavn(), skjema.getKjonn(), skjema.getPassord());
+			String salt = PassordUtil.genererTilfeldigSalt();
+			String hash = PassordUtil.hashMedSalt(skjema.getPassord(), salt);
+			Deltager nyDeltager = new Deltager( skjema.getMobil(), skjema.getFornavn(), skjema.getEtternavn(), skjema.getKjonn(), hash, salt);
 			deltagerDAO.lagreNyDeltager(nyDeltager);
+			LoginUtil.logIn(request, skjema.getMobil());
 			request.getSession().setAttribute("skjema", skjema);
 			response.sendRedirect("BekreftelseServlet");
 		}else {

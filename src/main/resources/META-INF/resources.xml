@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <Resource id="DAT108LocalDS" name="DAT108LocalDS" type="javax.sql.DataSource">
+	jdbcDriver = org.postgresql.Driver
+	jdbcUrl = jdbc:postgresql://localhost:5432/dat108
+	userName = postgres
+	password = pass
+    </Resource>
+</resources>
+

@@ -20,27 +20,19 @@
 			<th align="left">Mobil</th>
 		</tr>
 		<c:forEach items="${deltagerListe}" var="d">
-		<tr bgcolor="#ffffff">
-			<td align="center"><c:out value="${d.kjonn}"/></td>
-			<td><c:out value="${d.fornavn}"/> <c:out value="${d.etternavn}"/></td>
-			<td><c:out value="${d.mobil}"/></td>
-		</tr>
-		</c:forEach>
-		<tr bgcolor="#aaffaa">
-			<td align="center">&#9792;</td>
-			<td>Anne Annesen</td>
-			<td>445 54 455</td>
-		</tr>
-		<tr bgcolor="#ffffff">
-			<td align="center">&#9794;</td>
-			<td>Arne Arnesen</td>
-			<td>901 23 456</td>
-		</tr>
-		<tr bgcolor="#ffffff">
-			<td align="center">&#9794;</td>
-			<td>Per Viskeler</td>
-			<td>112 23 344</td>
-		</tr>
+        <c:choose>
+        <c:when test = "${d.mobil eq mobil}"><tr bgcolor="#68F35F"></c:when>
+        <c:otherwise><tr bgcolor="#ffffff"></c:otherwise>
+        </c:choose>
+            <td align="center">
+            <c:choose>
+                <c:when test="${d.kjonn eq 'kvinne'}"><font color="pink">&#9792;</font></c:when>
+                <c:otherwise><font color="blue">&#9794;</font></c:otherwise>
+            </c:choose>
+            </td>
+            <td><c:out value="${d.fornavn}"/> <c:out value="${d.etternavn}"/></td>
+            <td><c:out value="${d.mobil}"/></td>
+        </c:forEach>
 		
 	</table>
 	<p>

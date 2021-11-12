@@ -25,9 +25,12 @@ public class DeltagerListeServlet extends HttpServlet {
 		if (!LoginUtil.erInnlogget(request)) {
 			response.sendRedirect("LoginServlet?f1=Det er kun registrerte deltagere som kan se deltagerlisten");
 		}else {
+			String mobil = (String) request.getSession().getAttribute("mobil");
 			//hente database og omgjøre til attributter
 			List<Deltager> deltagerListe = deltagerDAO.hentAlleDeltagere();
-			request.setAttribute("deltagerListe", deltagerListe);
+			request.getSession().setAttribute("deltagerListe", deltagerListe);
+			request.getSession().setAttribute("mobil", mobil);
+
 			
 			request.getRequestDispatcher("WEB-INF/jsp/deltagerliste.jsp").forward(request, response);
 		}
